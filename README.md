@@ -1,4 +1,4 @@
-# grupo 6 / sprint 4  🧸
+# grupo 6 / sprint 6  🧸
 
 
 ## Tablero de trabajo 📋
