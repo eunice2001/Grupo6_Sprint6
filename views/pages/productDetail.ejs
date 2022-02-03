@@ -1,6 +1,6 @@
 <%- include ('../partials/head',{title:"Detalle del producto"}) %> 
 <%- include("../partials/menuHeader.ejs")  %>  
-    <section class="detailProduct">
+    <!-- <section class="detailProduct">
             <div class="productImage">
                 <img src="/img/products/<%= articulo.img %>" alt="tren de madera">
             </div>
@@ -95,6 +95,22 @@
                 <img src="/img/products/trenes.jpg" alt="tren de madera">
                 <div class="relaCarrousel relaCarrouselRight"><i class="fas fa-arrow-alt-circle-right"></i></div>
             </div>
+        </div>
+    </section> -->
+    <section class="prinDetail">
+        <h3 class="titleDetail">Tren de madera</h3>
+        <img class="imgDetail" src="/img/products/<%= articulo.img %>" alt="">
+        <div class="priceDetail">
+            <h4>$800</h4>
+            <h5>------------</h5>
+        </div>
+        <a href="/carrito"><div class="carritoDetail">AÑADIR AL CARRITO</div></a>
+        <h5>------------</h5>
+        <div class="infoDetail">
+            <h4>Informacion adicional</h4>
+            <h5>------------</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore beatae tempora laborum delectus sapiente porro deleniti quibusdam iure dolorem dolorum totam, fugit quod enim omnis quia numquam dicta. Rem.</p>
+            <p>Tamaño: 50x50x50</p>
         </div>
     </section>
 <%- include("../partials/footerBase.ejs")  %>
