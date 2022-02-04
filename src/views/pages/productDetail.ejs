@@ -98,19 +98,81 @@
         </div>
     </section> -->
     <section class="prinDetail">
-        <h3 class="titleDetail">Tren de madera</h3>
         <img class="imgDetail" src="/img/products/<%= articulo.img %>" alt="">
-        <div class="priceDetail">
-            <h4>$800</h4>
-            <h5>------------</h5>
+        <div>
+            <h3 class="titleDetail">Tren de madera</h3>
+            <div class="priceDetail">
+                <h4>$800</h4>
+                <!-- <h4>$400</h4> -->
+                <!-- <h4>Individual: $800</h4>
+                <h4>Mayorista: $400</h4> -->
+            </div>
+            <a href="/carrito"><div class="carritoDetail">AÑADIR AL CARRITO</div></a>
+            <% if(user && access == 1){ %> 
+            <h4>Acciones</h4>
+            <div class="buttonAccionDivDetail">
+                <a href="/carrito"><div class="buttonAcDetail">EDITAR</div></a>
+                <form class="buttonEliminar" action="">
+                    <input type="submit" value="ELIMINAR">
+                </form>
+            </div>
+            <% } %> 
+            <!-- <div class="compartirDetail">
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram"></i>
+            </div> -->
         </div>
-        <a href="/carrito"><div class="carritoDetail">AÑADIR AL CARRITO</div></a>
-        <h5>------------</h5>
         <div class="infoDetail">
             <h4>Informacion adicional</h4>
-            <h5>------------</h5>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore beatae tempora laborum delectus sapiente porro deleniti quibusdam iure dolorem dolorum totam, fugit quod enim omnis quia numquam dicta. Rem.</p>
-            <p>Tamaño: 50x50x50</p>
+            <p class="infoSizeDetail">
+                <span>Tamaño:</span> 50x50x50
+            </p>
+        </div>
+        <div class="pagosDetail">
+            <h4>Metodos de pago</h4>
+            <div>
+                <i class="fas fa-file-alt"></i>
+                <p>3 cuotas sin interés con todas las tarjetas.</p>
+                <p>5% off con transferencia.</p>
+                <p>Efectivo por pago fácil ó rapipago</p>
+            </div>
+            <h4>Envios</h4>
+            <div>
+                <i class="fas fa-truck"></i>
+                <p>A domicilio en todo el país.</p>
+                <p>Envios FLASH en caba</p>
+            </div>
+        </div>
+    </section>
+    <section class="relacionados">
+        <div class="relaProduct">
+            <h3>PRODUCTOS RELACIÓNADOS</h3>
+            <div class="relaProImage">
+                <div class="relaCarrousel relaCarrouselLeft"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                <img src="/img/products/trenes.jpg" alt="tren de madera">
+                <div class="relaCarrousel relaCarrouselRight"><i class="fas fa-arrow-alt-circle-right"></i></div>
+            </div>
+            <div class="relaProImage oculto">
+                <div class="relaCarrousel relaCarrouselLeft"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                <img src="/img/products/trenes.jpg" alt="tren de madera">
+                <div class="relaCarrousel relaCarrouselRight"><i class="fas fa-arrow-alt-circle-right"></i></div>
+            </div>
+            <div class="relaProImage oculto">
+                <div class="relaCarrousel relaCarrouselLeft"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                <img src="/img/products/trenes.jpg" alt="tren de madera">
+                <div class="relaCarrousel relaCarrouselRight"><i class="fas fa-arrow-alt-circle-right"></i></div>
+            </div>
+            <div class="relaProImage oculto">
+                <div class="relaCarrousel relaCarrouselLeft"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                <img src="/img/products/trenes.jpg" alt="tren de madera">
+                <div class="relaCarrousel relaCarrouselRight"><i class="fas fa-arrow-alt-circle-right"></i></div>
+            </div>
+            <div class="relaProImage oculto">
+                <div class="relaCarrousel relaCarrouselLeft"><i class="fas fa-arrow-alt-circle-left"></i></div>
+                <img src="/img/products/trenes.jpg" alt="tren de madera">
+                <div class="relaCarrousel relaCarrouselRight"><i class="fas fa-arrow-alt-circle-right"></i></div>
+            </div>
         </div>
     </section>
 <%- include("../partials/footerBase.ejs")  %>

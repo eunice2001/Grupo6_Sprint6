@@ -143,7 +143,7 @@
     outline: 1px solid #333;
     border:none; 
 }
-/*relacionados
+relacionados*/
 .relacionados{
     width: 90%;
     margin: 10px auto;
@@ -177,14 +177,15 @@
 }
 .tablet{
     display: none;
-} */
+} 
 .prinDetail{
     width: 90%;
     margin: 0 auto;
-    background: white;
+    background: #F3F0D7;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid #8c8c8c;
 }
 .prinDetail > a{
     text-decoration: none;
@@ -195,10 +196,26 @@
     text-align: center;
     padding: 5px;
 }
+.titleDetail::after{
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: #FF7878;
+    display: flex;
+}
 .imgDetail{
     background-size: contain;
     background-attachment: fixed;
     width: 100%;
+}
+.priceDetail{
+    padding: 10px;
+}
+.priceDetail > h4{
+    margin: 0;
+    color: #FF7878;
+    text-shadow: 0 1px 0 #000;
+    font-size: 2rem;
 }
 .carritoDetail{
     background:#CEE5D0;
@@ -207,38 +224,70 @@
     padding: 10px;
     border: 1px solid #000;
     border-radius: 5px;
+    font-weight: bold;
+}
+.infoDetail{
+    text-align: center;
+}
+.infoDetail > h4{
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+.infoDetail > h4::after, .infoDetail>h4::before, .infoSizeDetail::after, .infoSizeDetail::before{
+    content: "";
+    width: 100%;
+    height: 5px;
+    background: #FF7878;
+    display: flex;
+}
+.infoSizeDetail{
+    font-size: 1.5rem;
+    padding: 10px 0;
+    text-align: left;
+    font-weight: bold;
+}
+.infoSizeDetail > span{
+    color: #FF7878;
+}
+.pagosDetail{
+    width: 100%;
+    text-align: center;
+}
+.pagosDetail > div > i{
+    font-size: 1.5rem;
+}
+.pagosDetail > h4{
+    border-top: 1px solid #8c8c8c;
+    padding: 5px 0;
+    font-size: 1.7rem;
+    margin: 0;
+}
+.buttonAccionDivDetail{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.buttonAcDetail{
+    background: #CEE5D0;
+    color: #000;
+    border: 1px solid #000;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+    
+}
+.buttonEliminar{
+    display: inline-block;
+}
+.buttonEliminar > input{
+    background: #FF7878;
+    border: 1px solid #000;
+    padding: 7px;
+    border-radius: 5px;
 }
 @media only screen and (min-width: 768px){
-    .info{
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .info > h4{
-        width: 100%;
-    }
-    .info > h3{
-        width: 100%;
-    }
-    .infoDescrip{
-        display: block;
-        width: 100%;
-        font-size: 1rem;
-    }
-    .infoPrecio{
-        font-size: 1.5rem;
-        text-align: center;
-        width: 100%;
-    }
-    .specsGroup{
-        margin-bottom: 20px;
-    }
-    .specsGroupInf{
-        display: flex;
-    }
-    .specsGroupItem{
-        width: 100%;
-        justify-content: flex-start;
+    .imgDetail{
+        width: 80%;
     }
     .relaCarrousel > i{
         font-size: 3rem;
@@ -270,18 +319,23 @@
     .relaCarrousel > i{
         display: none;
     }
-    .productImage{
-        width: 70%;
-    }
 }
 @media only screen and (min-width: 1024px){
-    .info{
-        flex-direction: column;
-        padding: 20px;
-    }
-    .detailProduct{
-        flex-wrap: wrap;
+    .prinDetail{
         flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+    .titleDetail{
+        margin: 0 0 0 auto
+    }
+    .imgDetail{
+        width: 50%;
+        margin-right: 20px;
+    }
+    .infoDetail, .pagosDetail{
+        width: 80%;
     }
     .relaProduct > h3{
         width: 100%;
