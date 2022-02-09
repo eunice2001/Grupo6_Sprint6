@@ -3,6 +3,7 @@ const {
   Model
 } = require('sequelize');
 const payment = require('./payment');
+const shipping = require('./shipping');
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     /**
@@ -14,6 +15,14 @@ module.exports = (sequelize, DataTypes) => {
       Order.belongsTo(models.Payment);
       Order.belongsTo(models.User);
       Order.belongsTo(models.Status);
+      Order.hasMany(models.OrderDetail, {
+        foreignKey:"order_id",
+        as: "orderDetails"
+      });
+      Order.hasOne(models.Shipping,{
+        foreignKey: "order_id",
+        as: "shippings"
+      })
     }
   }
   Order.init({

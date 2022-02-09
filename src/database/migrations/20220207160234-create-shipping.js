@@ -18,10 +18,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       order_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "orders",
+          key: "id"
+        }
       },
       payment_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "payments",
+          key: "id"
+        }
       },
       city: {
         type: Sequelize.STRING
