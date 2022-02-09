@@ -27,13 +27,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       cat_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'cats',
+          key: 'id'
+        }
       },
       size_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model:'sizes',
+          key: 'id'
+        }
       },
       discount_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model:'discounts',
+          key: 'id'
+        }
       },
       description: {
         type: Sequelize.STRING

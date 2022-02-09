@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const payment = require('./payment');
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     /**
@@ -10,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Order.belongsTo(models.Payment);
+      Order.belongsTo(models.User);
+      Order.belongsTo(models.Status);
     }
   }
   Order.init({

@@ -15,13 +15,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       payments_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "payments",
+          key: "id"
+        }
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "users",
+          key: "id"
+        }
       },
       status_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "statuses",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,
