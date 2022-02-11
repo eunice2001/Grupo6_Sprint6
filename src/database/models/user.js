@@ -13,6 +13,21 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"user_id",
         as:"orders"
       })
+      User.hasOne(models.Avatar,{
+        foreignKey:"avatar_id",
+        as:"avatars"
+      })
+      User.hasOne(models.Rol,{
+        foreignKey:"rol_id",
+        as:"rols"
+      })
+      User.belongsToMany(models.Product,{
+        as:"products",
+        through:"visited",
+        foreignKey:"user_id",
+        otherKey:"product_id",
+        timestamps: false
+      })
     }
   }
   User.init({
