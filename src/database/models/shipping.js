@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Shipping.belongsTo(models, Order)
       Shipping.belongsTo(models, Payment)
+      Shipping.hasOne(models.OrderDetail,{
+        foreignKey: "user_add_id",
+        as: "shippings"
+      })
     }
   }
   Shipping.init({

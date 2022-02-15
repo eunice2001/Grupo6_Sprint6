@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
 
     static associate(models) {
-      Product.belongsTo(models.Category, {
+      Product.belongsTo(models.Cat, {
         foreignKey: 'cat_id',
         as: "cats"
       });
@@ -25,9 +25,10 @@ module.exports = (sequelize, DataTypes) => {
       Product.hasOne(models.OrderDetail, {
         foreignKey: "product_id",
         as: "orderDetails"
-      })
+      });
+
       //BelongsToMany
-      Product.belongsToMany(models.User,{
+      Product.belongsTo(models.User,{
         as:"user",
         through:"visited",
         foreignKey:"product_id",
