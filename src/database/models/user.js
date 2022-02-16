@@ -21,9 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"rol_id",
         as:"rols"
       })
-      User.hasMany(models.visited,{
+      User.belongsToMany(models.Product,{
+        as: "products",
+        through: "visiteds",
         foreignKey: "user_id",
-        as: "visits"
+        otherKey: "product_id",
+        timestamps: false
       })
     }
   }
@@ -37,7 +40,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
-    timestamps: false
   });
   return User;
 };

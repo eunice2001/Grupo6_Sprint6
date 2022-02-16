@@ -1,7 +1,7 @@
 const fs=require('fs');
 let jsonDb=require('../model/mainJson.js');
 let db=jsonDb('user');
-const {compareSync, hashSync}=require('bcryptjs')
+const { compareSync, hashSync }= require('bcryptjs');
 const {validatioResult, validationResult}=require('express-validator');
 const { Console } = require('console');
 const controllerPages = {
