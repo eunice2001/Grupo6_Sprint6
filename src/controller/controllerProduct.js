@@ -1,6 +1,21 @@
-const fs=require('fs');
-let jsonDb=require('../model/mainJson.js');
-let db=jsonDb('products');
+const path = require("path")
+let db = require("../database/models");
+const sequelize = db.sequelize;
+const {Op} = require("sequelize");
+const controllerImage = require("controllerImage") 
+
+//llamamos los modelos
+const Product = db.Product;
+const Cat = db.Cat;
+const Size = db.Size;
+const Discount = db.Discount;
+
+
+
+//eliminar fs,jsonDb y db al finalizar
+//const fs=require('fs');
+//let jsonDb=require('../model/mainJson.js');
+//let db=jsonDb('products');
 
 const controllerProduct={
     productos:(req, res) =>{
@@ -12,21 +27,21 @@ const controllerProduct={
     },
     crearAccion:(req,res)=>{
         let body = req.body;
-        body.img = req.file.filename;
-        // const objt = {
-        //     id:0,
-        //     name:body.name,
-        //     precio:body.price,
-        //     descripcion:body.description,
-        //     img:req.file.filename,
-        //     peso:body.weight,
-        //     tamanio:body.size,
-        //     cat:body.cat,
-        //     offPorcen:body.discount,
-        //     cantidad:1000
-        // }
-        db.crear(body);
-        res.redirect("/")
+        // body.img = req.file.filename;
+        // // const objt = {
+        // //     id:0,
+        // //     name:body.name,
+        // //     precio:body.price,
+        // //     descripcion:body.description,
+        // //     img:req.file.filename,
+        // //     peso:body.weight,
+        // //     tamanio:body.size,
+        // //     cat:body.cat,
+        // //     offPorcen:body.discount,
+        // //     cantidad:1000
+        // // }
+        // db.crear(body);
+        // res.redirect("/")
     },
     edit:(req,res)=>{
         let id=req.params.id;

@@ -11,7 +11,7 @@ app.set('views engine','ejs');
 app.set('views',path.resolve(__dirname,'views'));
 
 //carpeta publica
-app.use(express.static('src/public'));
+app.use(express.static('public'));
 
 //para usar la informacion
 app.use(express.urlencoded({extended:false}));
