@@ -13,20 +13,17 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"user_id",
         as:"orders"
       })
-      User.hasOne(models.Avatar,{
+      User.belongsTo(models.Avatar,{
         foreignKey:"avatar_id",
         as:"avatars"
       })
-      User.hasOne(models.Rol,{
+      User.belongsTo(models.Rol,{
         foreignKey:"rol_id",
         as:"rols"
       })
-      User.belongsToMany(models.Product,{
-        as:"products",
-        through:"visited",
-        foreignKey:"user_id",
-        otherKey:"product_id",
-        timestamps: false
+      User.hasMany(models.visited,{
+        foreignKey: "user_id",
+        as: "visits"
       })
     }
   }
@@ -40,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    timestamps: false
   });
   return User;
 };

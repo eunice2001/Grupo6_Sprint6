@@ -21,18 +21,18 @@ module.exports = {
         type: Sequelize.STRING
       },
       avatar_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: "avatars",
+          key: "id"
+        }
       },
       rol_id: {
-        type: Sequelize.INTEGER
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER,
+        references:{
+          model: "rols",
+          key: "id"
+        }
       }
     });
   },
