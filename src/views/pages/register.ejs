@@ -17,31 +17,26 @@
                     <% } %> 
                 <% } %> 
                 <form class="registerForm" action="/register" method="POST">
-                    <input type="text" placeholder="Nombre" name="nombre" id="nombre" value="<%= locals.oldData? locals.oldData.nombre:null %>"require/>
+                    <input type="text" placeholder="Nombre" name="first_name" id="first_name" value="<%= locals.oldData? locals.oldData.first_name:null %>"require/>
                     <% if (locals.errors && locals.errors.nombre) { %>
                         <p class="errForm"><%= locals.errors.nombre.msg %></p>
                     <% } %>
-                    <input type="text" placeholder="Usuario" name="usuario" id="usuario" value="<%= locals.oldData? locals.oldData.usuario:null %>" require/>
-                    <% if (locals.errors && locals.errors.usuario) { %>
-                        <p class="errForm"><%= locals.errors.usuario.msg %></p>
+                    <input type="text" placeholder="Apellido" name="last_name" id="last_name" value="<%= locals.oldData? locals.oldData.last_name:null %>"require/>
+                    <% if (locals.errors && locals.errors.nombre) { %>
+                        <p class="errForm"><%= locals.errors.nombre.msg %></p>
                     <% } %>
                     <input type="email" placeholder="Email" name="email" id="email"  value="<%= locals.oldData? locals.oldData.email:null %>"require/>
                     <% if (locals.errors && locals.errors.email) { %>
                         <p class="errForm"><%= locals.errors.email.msg %></p>
                     <% } %>
-                    <input type="text" placeholder="Domicilio" name="direccion" id="direccion"  value="<%= locals.oldData? locals.oldData.direccion:null %>"require/>
-                    <% if (locals.errors && locals.errors.direccion) { %>
-                        <p class="errForm"><%= locals.errors.direccion.msg %></p>
-                    <% } %>
-                    <input type="tel" placeholder="Teléfono (opcional)" name="telefono" id="telefono"  value="<%= locals.oldData? locals.oldData.telefono:null %>"require/>
                     <input type="password" placeholder="Contraseña" name="pass" id="contrasenia" require/> 
                     <input type="password" placeholder="Confirmar contraseña" name="pass1" id="contrasenia1"require/>
                     <% if (locals.errors && locals.errors.pass) { %>
                         <p class="errForm"><%= locals.errors.pass.msg %></p>
                     <% } %>
-                    <select name="cat" id="categoria">
+                    <select name="rol" id="categoria">
                         <option value="3">comprador</option>
-                        <option value="2">vendedor</option>
+                        <option value="2">mayorista</option>
                     </select>
                     <input type="submit" value="REGISTRARSE">
                     <p class="registerFormPregunta">¿Ya tenés una cuenta? <a href="/login">Iniciar sesión</a></p>

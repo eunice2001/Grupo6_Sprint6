@@ -1,9 +1,12 @@
 const fs=require('fs');
-let jsonDb=require('../model/mainJson.js');
-let db=jsonDb('user');
+let db= require("../database/models");
 const { compareSync, hashSync }= require('bcryptjs');
 const {validatioResult, validationResult}=require('express-validator');
 const { Console } = require('console');
+
+const User = db.User;
+const Address = db.Address;
+
 const controllerPages = {
     'home': (req, res) => {
         res.render('pages/home.ejs')
@@ -44,25 +47,30 @@ const controllerPages = {
                 oldData:req.body,
             })
         }
-        let id=req.params.id;
-        const buscar=db.buscar(id);
-        let body = req.body;
-        let objetoNew={
-            "id": 0,
-            "nombre":req.body.nombre,
-            "usuario":req.body.usuario,
-            "email":req.body.email,
-            "domicilio":req.body.direccion,
-            "telf":req.body.telefono,
-            "password":hashSync(req.body.pass,10),
-            "cat":req.body.cat,
-            "img":" ",
-            "access":2,
-        }
-        console.log(req.body);
-        db.crear(objetoNew);
-        res.redirect("/")
-    
+        User.findOne({where: {email:req.body.email}})
+         .then(data =>{
+            if(data === null){
+                console.log("este email es valido");
+                User.create({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    pass: hashSync(req.body.pass,10),
+                    avatar_id: 1,
+                    rol_id: req.body.rol
+                });
+                res.redirect("/")
+            }else{
+                return res.render('pages/register.ejs',{
+                    errors: {
+                        email:{
+                            msg: "email registrado"
+                        }
+                    },
+                    oldData:req.body,
+                });
+            }
+         })
     },
     'contacto':(req, res) =>{
         res.render('pages/contacto.ejs') 
