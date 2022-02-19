@@ -50,10 +50,21 @@
             <% db.forEach(element => { %>
                 <div class="products-lista-articulos-contenedor_producto">
                         <a href="/products/<%= element.id %>">
-                        <img src="/img/products/<%= element.img %> " alt="articulox">
+                        <% for(let i = 0; i<element.images.length;i++){ %>
+                            <img src="/img/products/<%= element.images[i].image %> " alt="articulox">
+                        <% } %> 
                         <div class="contenedor-producto-info">
                             <p><%= element.name %> </p>
-                            <p>$<%= element.precio %> </p>
+                            <% if(access == 3 || !access){ %> 
+                                <p>$<%= element.price_inv %> </p>
+                            <% } %> 
+                            <% if(access == 2){ %> 
+                                <p>$<%= element.price_who %> </p>
+                            <% } %> 
+                            <% if(access == 1){ %> 
+                                <p>Individual $<%= element.price_who %> </p>
+                                <p>Mayorista $<%= element.price_inv %> </p>
+                            <% } %> 
                         </div>
                         <% if (element.offPorcen) { %>
                             <div class="contenedor-producto-cuota">

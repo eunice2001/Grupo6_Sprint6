@@ -15,22 +15,28 @@ const controllerPages = {
         res.render('pages/login.ejs')
     },
     'loginProcess': (req, res) => {
-        let user = db.findMail(req.body.email)
-        if(user){
-            let confirm = compareSync(req.body.pass,user.password)
-            if(!confirm){
-                return res.render('pages/login.ejs',{password: !confirm ? "La contraseña ingresada no es correcta" : null, oldEmail: req.body.email})
+        User.findOne({where:{email:req.body.email}})
+         .then(user=> {
+            if(user !== null){
+                let confirm = compareSync(req.body.pass,user.dataValues.pass);
+                if(!confirm){
+                    return res.render('pages/login.ejs',{password: !confirm ? "La contraseña ingresada no es correcta" : null, oldEmail: req.body.email})
+                }
+                req.session.user = user.dataValues;
+                req.session.access = user.dataValues.rol_id;
+                if(req.body.recordarUsuario !== undefined){
+                    res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+                }
+                return res.redirect("/")                
+            }else{
+                res.render('pages/login.ejs',{email: !user ? "El email ingresado no es correcto" : null})
             }
-            req.session.user = user
-            req.session.access = user.access
-            req.session.cat = user.cat
-            return res.redirect("/")
-        }else{
-            res.render('pages/login.ejs',{email: !user ? "El email ingresado no es correcto" : null})
-        }
+         })
+         .catch(e => console.log(`Este error es: ${e}`))
     },
     'logout': (req,res)=>{
-        delete req.session.user
+        delete req.session.user;
+        res.cookie('userEmail', req.body.email, { maxAge: -1 })
         res.redirect("/")
     },
     'carrito':(req,res) =>{

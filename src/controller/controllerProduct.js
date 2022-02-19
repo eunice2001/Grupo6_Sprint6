@@ -1,8 +1,8 @@
-const path = require("path")
-//let db = require("../database/models");
-//const sequelize = db.sequelize;
-const {Op} = require("sequelize");
-const controllerImage = require("./controllerImage") 
+// const path = require("path")
+// //let db = require("../database/models");
+// //const sequelize = db.sequelize;
+// const {Op} = require("sequelize");
+// const controllerImage = require("./controllerImage") 
 
 //llamamos los modelos
 // const Product = db.Product;
@@ -10,38 +10,57 @@ const controllerImage = require("./controllerImage")
 // const Size = db.Size;
 // const Discount = db.Discount;
 
-
-
 //eliminar fs,jsonDb y db al finalizar
-const fs=require('fs');
-let jsonDb=require('../model/mainJson.js');
-let db=jsonDb('products');
+//const fs=require('fs');
+//let jsonDb=require('../model/mainJson.js');
+//let db=jsonDb('products');
+
+const db = require("../database/models");
+const controllerImage = require("./controllerImage")
+
+//LLAMAMOS A LOS MODELOS
+const Product = db.Product;
+const Cat = db.Cat;
+const Size = db.Size;
+const Discount = db.Discount;
+const Image = db.Images;
+
 
 const controllerProduct={
     productos:(req, res) =>{
-        const productos=db.all() 
-        res.render('pages/productos.ejs',{db:productos})
+        Product.findAll({
+            include: ["images"]
+        })
+        .then(products =>{
+            console.log(products);
+            res.render('pages/productos.ejs',{db:products})
+        })
     },
     create:(req,res)=>{
         res.render('admin/product/addProduct.ejs')
     },
     crearAccion:(req,res)=>{
         let body = req.body;
-        // body.img = req.file.filename;
-        // // const objt = {
-        // //     id:0,
-        // //     name:body.name,
-        // //     precio:body.price,
-        // //     descripcion:body.description,
-        // //     img:req.file.filename,
-        // //     peso:body.weight,
-        // //     tamanio:body.size,
-        // //     cat:body.cat,
-        // //     offPorcen:body.discount,
-        // //     cantidad:1000
-        // // }
-        // db.crear(body);
-        // res.redirect("/")
+        Product.create({
+            name: req.body.name,
+            price_inv: req.body.price_inv,
+            price_who: req.body.price_who,
+            stock: req.body.stock,
+            stock_min: req.body.stock_min,
+            stock_max: req.body.stock_max,
+            cat_id: req.body.category,
+            size_id: req.body.size,
+            discount_id: req.body.discount,
+            description: req.body.description,
+            visibility: req.body.visibility
+        })
+        .then(producto =>{
+            console.log(producto.id);
+            controllerImage.file(producto.id,req.file.filename)
+            res.redirect('/products');
+
+        })
+        .catch(e => console.log("el error es: "+ e));
     },
     edit:(req,res)=>{
         let id=req.params.id;
@@ -74,8 +93,11 @@ const controllerProduct={
         res.redirect('/');
     },
     productDetail:(req, res) =>{
-        let articulo = db.buscar(req.params.id)
-        res.render('pages/productDetail.ejs',{articulo})
+        Product.findByPk(req.params.id)
+         .then(product =>{
+             //let imageProduct = controllerImage.list(req.params.id)
+             res.render('pages/productDetail.ejs',{articulo:product})
+         })
     }
 };
 module.exports=controllerProduct;

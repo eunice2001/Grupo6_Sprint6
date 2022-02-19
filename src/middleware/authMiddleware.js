@@ -8,7 +8,7 @@ const auth = {
     },
     'visited':(req,res,next)=>{
         if(req.session.user != undefined){
-            res.redirect("/perfil/1");
+            res.redirect("/perfil/"+ req.session.user.id);
         }else{
             next();
         }
