@@ -46,6 +46,9 @@
                 </ul>
             </div>
         </article>
+        <% if(response == false){ %>
+            <h2 class="searchNull">No se encontraron resultados</h2>
+        <% }else{ %>  
         <article class="products-lista-articulos">
             <% db.forEach(element => { %>
                 <div class="products-lista-articulos-contenedor_producto">
@@ -76,5 +79,6 @@
                         </div>
             <% }) %>
         </article>
+        <% } %>
     </section>
 <%- include('../partials/footerBase')  %> 

@@ -9,15 +9,17 @@ const upload = require('../middleware/multerMiddleware');
 router.get('/', controllerProduct.productos);
 
 //vista del formulario crear
-
 router.get('/create',controllerAuth.admin, controllerProduct.create);
 //accion del formulario crear
 router.post('/', upload.single('img'), controllerProduct.crearAccion);
-
+//editar form
 router.get('/:id/edit',controllerAuth.admin ,controllerProduct.edit);
+//accion editar formulario
 router.put('/:id/edit',controllerAuth.admin, upload.single('img'), controllerProduct.update);
-
-router.get('/:id', controllerProduct.productDetail);
+//detalle del producto
+router.get('/detail/:id', controllerProduct.productDetail);
 //accion eliminar
-router.post('/:id',controllerAuth.admin, controllerProduct.productDelete);
+router.delete('/:id/delete',controllerAuth.admin, controllerProduct.productDelete);
+//search
+router.get('/search',controllerProduct.search)
 module.exports=router;

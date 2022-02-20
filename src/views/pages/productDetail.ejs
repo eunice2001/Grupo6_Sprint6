@@ -3,7 +3,7 @@
     <section class="prinDetail">
         <img class="imgDetail" src="/img/products/<%= articulo.images[0].dataValues.image %>" alt="">
         <div>
-            <h3 class="titleDetail">Tren de madera</h3>
+            <h3 class="titleDetail"><%= articulo.name %> </h3>
             <div class="priceDetail"> 
                 <% if(access == 1){ %> 
                     <h4>Individual $<%= articulo.price_inv %> </h4>
@@ -15,16 +15,13 @@
                 <% if(access == 3 || !access){ %> 
                     <h4>$<%= articulo.price_inv %> </h4>
                 <% } %> 
-                <!-- <h4>$400</h4> -->
-                <!-- <h4>Individual: $800</h4>
-                <h4>Mayorista: $400</h4> -->
             </div>
             <a href="/carrito"><div class="carritoDetail">AÑADIR AL CARRITO</div></a>
             <% if(user && access == 1){ %> 
             <h4>Acciones</h4>
             <div class="buttonAccionDivDetail">
-                <a href="/carrito"><div class="buttonAcDetail">EDITAR</div></a>
-                <form class="buttonEliminar" action="">
+                <a href="/products/<%= articulo.id %>/edit "><div class="buttonAcDetail">EDITAR</div></a>
+                <form class="buttonEliminar" action="/products/<%= articulo.id %>/delete?_method=DELETE" method="post">
                     <input type="submit" value="ELIMINAR">
                 </form>
             </div>
@@ -36,9 +33,12 @@
         </div>
         <div class="infoDetail">
             <h4>Informacion adicional</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempore beatae tempora laborum delectus sapiente porro deleniti quibusdam iure dolorem dolorum totam, fugit quod enim omnis quia numquam dicta. Rem.</p>
+            <p><%= articulo.description %> </p>
             <p class="infoSizeDetail">
-                <span>Tamaño:</span> 50x50x50
+                <span>Tamaño:</span> <%= articulo.sizes.dataValues.size %> 
+            </p>
+            <p class="infoSizeDetail">
+                <span>Categoría:</span> <a href="/products/cats/<%= articulo.cats.dataValues.id %> "><%= articulo.cats.dataValues.name %></a>
             </p>
         </div>
         <div class="pagosDetail">
