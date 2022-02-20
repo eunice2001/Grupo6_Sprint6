@@ -16,13 +16,13 @@ app.use(express.static('public'));
 //para usar la informacion
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-//app.use(cookieParser)
 app.use(session({
     secret: "123",
     resave: false,
     saveUninitialized: true
 }))
 
+app.use(cookieParser())
 //middleware de session
 app.use(accessMiddleware)
 

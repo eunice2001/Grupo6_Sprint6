@@ -93,9 +93,10 @@ const controllerProduct={
         res.redirect('/');
     },
     productDetail:(req, res) =>{
-        Product.findByPk(req.params.id)
+        Product.findByPk(req.params.id,{
+            include: ["images"]
+        })
          .then(product =>{
-             //let imageProduct = controllerImage.list(req.params.id)
              res.render('pages/productDetail.ejs',{articulo:product})
          })
     }

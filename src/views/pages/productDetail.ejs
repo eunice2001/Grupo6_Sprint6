@@ -1,12 +1,20 @@
 <%- include ('../partials/head',{title:"Detalle del producto"}) %> 
 <%- include("../partials/menuHeader.ejs")  %>  
     <section class="prinDetail">
-        <img class="imgDetail" src="/img/products/<%= articulo.img %>" alt="">
+        <img class="imgDetail" src="/img/products/<%= articulo.images[0].dataValues.image %>" alt="">
         <div>
-             
             <h3 class="titleDetail">Tren de madera</h3>
-            <div class="priceDetail">
-                <h4>$800</h4>
+            <div class="priceDetail"> 
+                <% if(access == 1){ %> 
+                    <h4>Individual $<%= articulo.price_inv %> </h4>
+                    <h4>Mayorista $<%= articulo.price_who %> </h4>
+                <% } %> 
+                <% if(access == 2){ %> 
+                    <h4>$<%= articulo.price_who %> </h4>
+                <% } %> 
+                <% if(access == 3 || !access){ %> 
+                    <h4>$<%= articulo.price_inv %> </h4>
+                <% } %> 
                 <!-- <h4>$400</h4> -->
                 <!-- <h4>Individual: $800</h4>
                 <h4>Mayorista: $400</h4> -->
