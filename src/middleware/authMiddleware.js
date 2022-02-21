@@ -1,3 +1,5 @@
+const res = require("express/lib/response");
+
 const auth = {
     'logged': (req,res,next)=>{
         if(req.session.user != undefined){
@@ -27,6 +29,13 @@ const auth = {
             next();
         }else{
             res.send("no puede acceder")
+        }
+    },
+    'user':(req,res,next)=>{
+        if(req.session.user.id == req.params.id){
+            next()
+        }else{
+            res.redirect(`/perfil/${req.session.user.id}/edit`)
         }
     }
 }

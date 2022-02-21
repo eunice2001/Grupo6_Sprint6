@@ -11,15 +11,17 @@
 <body>
     <%- include("../partials/menuHeader.ejs")  %>
     <section class="seccion-usuario">
-        
         <article class="seccion-usuario_perfil">
             <div class="contenedor-datos-usuario">
                 <div class="contenedor-img_usuario">
                     <img src="/img/logo_pequeño.png" alt="foto perfil">
                 </div>
                 <div class="mailName">
-                    <p class="name"><%= `Hola ${user.first_name} ${user.last_name}`  %> </p>
-                    <p class="mail"> exampledemail@algo.algo</p>
+                    <p class="name"><%= `Hola ${userData.first_name} ${userData.last_name}`  %> </p>
+                    <p class="mail"><%= `Email: ${userData.email}` %> </p>
+                    <% if(userData.id == user.id){ %> 
+                        <div><a href="/perfil/<%= user.id %>/edit">EDITAR PERFIL</a></div>
+                    <% }else{} %>  
                 </div>
                 <div class="estrella">
                     <h3>Valore su conformidad</h3>

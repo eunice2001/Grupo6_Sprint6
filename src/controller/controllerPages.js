@@ -57,15 +57,27 @@ const controllerPages = {
          .then(data =>{
             if(data === null){
                 console.log("este email es valido");
-                User.create({
+                let userCreate = User.create({
                     first_name: req.body.first_name,
                     last_name: req.body.last_name,
                     email: req.body.email,
                     pass: hashSync(req.body.pass,10),
                     avatar_id: 1,
                     rol_id: req.body.rol
-                });
-                res.redirect("/")
+                })
+                .then(userCreate =>{
+                    addressCreate = Address.create({
+                        province: "",
+                        city: "",
+                        street:"",
+                        number:"",
+                        cp:"",         
+                        phone:"",
+                        floor:"",
+                        user_id: userCreate.id,
+                    })
+                    .then(result => res.redirect('/'))
+                })
             }else{
                 return res.render('pages/register.ejs',{
                     errors: {
@@ -83,6 +95,6 @@ const controllerPages = {
     },
     'somos':(req, res) =>{
         res.render('pages/somos.ejs') /* res.render muestra el motor de plantilla/ valor */
-    }     
+    } 
 }
 module.exports = controllerPages;

@@ -12,7 +12,7 @@
             <li><a href="/somos">QUIENES SOMOS</a></li>
             <li><a href="/contacto">CONTACTO</a></li>
             <% if(user){ %>
-                <li><a href="/perfil/1"><i class="fas fa-user"></i></a></li>
+                <li><a href="/perfil/<%= user.id %> "><i class="fas fa-user"></i></a></li>
                 <li><a href="/carrito"><i class="fas fa-shopping-cart"></i></a></li>
                 <li><a href="/logout"><i class="fas fa-sign-out-alt"></i></a></li>
             <% }else{ %> 

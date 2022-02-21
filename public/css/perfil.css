@@ -79,6 +79,30 @@
     color: #fd4;
     text-shadow: 0 0 20px #952;
 }
+.profileEditCont{
+    display: flex;
+    border: 5px solid #FF7878;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+.profileEditCont > img{
+    background: #fff;
+}
+.formProfileEdit > label{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FF7878;
+    padding: 5px;
+}
+.profileEditCont > div{
+    background: #F3F0D7;
+    color: #FF7878;
+    width: 100%;
+    padding-left: 10px;
+}
+.profileEditCont > div:last-child{
+    border-left: 2px solid #F3F0D7;
+}
 @media only screen and (min-width: 768px){
     .seccion-usuario_perfil-compras{
         display: flex;
