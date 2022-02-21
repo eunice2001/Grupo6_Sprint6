@@ -30,17 +30,20 @@ app.use(accessMiddleware)
 app.use(methodOverride('_method'));
 
 //requerimos rutas main
-const rutasPages = require('./routes/pagesRoutes');
-//requerimos rutas perfil
-const rutasPerfil= require('./routes/perfilRoutes')
-//requerimos rutas admin
-const rutasAdmin= require('./routes/adminRoutes')
+const routerPages = require('./routes/pagesRoutes');
+//requerimos router perfil
+const routerPerfil= require('./routes/perfilRoutes')
+//requerimos router admin
+const routerAdmin= require('./routes/adminRoutes')
 //ruta de productos
-const rutasProducts=require('./routes/productsRoutes')
-app.use('/',rutasPages);
-app.use('/perfil',rutasPerfil);
-app.use('/admin',rutasAdmin);
-app.use('/products',rutasProducts)
+const routerProducts=require('./routes/productsRoutes')
+//router category
+const routerCategory = require('./routes/categoryRoutes')
+app.use('/',routerPages);
+app.use('/perfil',routerPerfil);
+app.use('/admin',routerAdmin);
+app.use('/products',routerProducts)
+app.use('/category',routerCategory)
 
 
 

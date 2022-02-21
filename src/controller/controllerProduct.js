@@ -102,7 +102,7 @@ const controllerProduct={
         }
         Promise.all([productUpdate,imageUpdate])
         .then(([product,image])=>{
-            res.redirect(`/products/${req.params.id}`);
+            res.redirect(`/products/detail/${req.params.id}`);
         })
     },
     productDelete:(req,res)=>{

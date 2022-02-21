@@ -84,7 +84,7 @@ list-style: none;
     transform: scale(1.1);
     cursor: pointer;
     box-shadow: 0 0 10px rgb(206, 42, 119);
-    transition: all ease .4s;
+    transition: all ease .1s;
 }
 .contenedor-imgHome > div > h4{
     font-size: 1.5rem;
