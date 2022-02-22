@@ -1,6 +1,6 @@
 cuenta admin
 ------------
-email: dh@admin.cc
+email: admin@dh.com
 pass: 11111
 
 ||||||||||||||
@@ -8,8 +8,8 @@ pass: 11111
 cuenta vendedor
 ---------------
 
-email: contacto@juansosa.com.ar
-pass: 12345
+email: mayorista@dh.com
+pass: 11111
 
 
 |||||||||||||||||||||||||
@@ -17,5 +17,5 @@ pass: 12345
 cuenta comprador
 ---------------
 
-email: sosajuanignacio17@gmail.com
-pass: 123456
+email: individual@dh.com
+pass: 11111
