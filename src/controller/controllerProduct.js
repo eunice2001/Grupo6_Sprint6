@@ -40,7 +40,13 @@ const controllerProduct={
         })
     },
     create:(req,res)=>{
-        res.render('admin/product/addProduct.ejs')
+        let discountConsult = Discount.findAll();
+        let categoryConsult = Cat.findAll();
+        let sizeConsult = Size.findAll();
+        Promise.all([discountConsult,categoryConsult,sizeConsult])
+        .then(([discount,category,size])=>{
+            res.render('admin/product/addProduct.ejs',{discount,category,size})
+        })
     },
     crearAccion:(req,res)=>{
         let body = req.body;
